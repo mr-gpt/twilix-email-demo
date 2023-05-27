@@ -14,7 +14,9 @@ import {
 import axios from 'axios';
 
 const SimpleForm = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(`James: Hi Bill, on my 21st birthday, I wanted to invite you to my birth party! Can you make it?
+---
+Bill: `);
   const [apiKey, setApiKey] = useState('');
   const [responseText, setResponseText] = useState('');
   const [errorText, setErrorText] = useState('');
