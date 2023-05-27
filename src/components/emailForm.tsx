@@ -53,7 +53,7 @@ Bill: `);
       );
       setResponseText(JSON.stringify(response.data, null, 2));
       setLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       if (axios.isAxiosError(error)) {
         setErrorText(error.message);
       } else {
