@@ -99,7 +99,7 @@ const MyForm: React.FC = () => {
   }
 
   return (
-    <Box maxWidth={400}>
+    <Box maxWidth={400} margin={8}>
         <Heading>Extract Playground</Heading>
         <Text>
           API Key (<a href="https://app.twilix.io">Click here to get it</a>){" "}
@@ -111,7 +111,7 @@ const MyForm: React.FC = () => {
         ></Input>
     <Text>Enter text contents you would like to extract from here:</Text>
       <Textarea placeholder="Enter information here" value={formValues.text} onChange={handleTextChange} width={600}
-        height={600}/>
+        height={400}/>
 
       {formValues.extract_infos.map((extractInfo, index) => (
         <Box key={index} marginTop={8} width={600} marginBottom={8}>

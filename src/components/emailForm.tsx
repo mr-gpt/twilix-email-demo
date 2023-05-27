@@ -79,12 +79,13 @@ Bill: `);
               type="password"
             ></Input>
             <FormLabel>Email Input</FormLabel>
+            <Text>Put a '---'in between each response.</Text>
             <Textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
               isRequired
-              minHeight="100px"
-              maxHeight="600px"
+              minHeight="500px"
+              maxHeight="500px"
               minWidth="600px"
               maxWidth="800px"
               resize="none"

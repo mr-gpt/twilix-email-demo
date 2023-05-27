@@ -23,7 +23,7 @@ export const App = () => {
         alignItems="center"
       >
         <VStack spacing={4}>
-          <Stack spacing={4} direction="row" align="center">
+          <Stack spacing={4} direction="row" align="center" marginTop={8}>
             <Button colorScheme="teal" size="xs" onClick={(event: any) => setPlayground("auto-suggest")}
            >
               Auto-Suggest Playground
