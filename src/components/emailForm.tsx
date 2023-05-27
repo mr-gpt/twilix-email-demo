@@ -28,6 +28,7 @@ Bill: `);
     setLoading(true);
     setErrorText('');
     try {
+      // run auto suggest on the collection name
       const response = await axios.post(
         `https://api.twilix.io/collection/${collection_name}/auto_suggest`,
         { text }, {
@@ -56,7 +57,7 @@ Bill: `);
       <form onSubmit={handleSubmit}>
         <VStack width="100%" spacing={4}>
           <FormControl id="text">
-            <FormLabel>API Key:</FormLabel>
+            <FormLabel>API Key (<a href="https://app.twilix.io">Click here to get it</a>) </FormLabel>
             <Input
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
