@@ -100,7 +100,15 @@ const MyForm: React.FC = () => {
 
   return (
     <Box maxWidth={400}>
-      <Text>Enter text contents you would like to extract from here:</Text>
+        <Text>
+          API Key (<a href="https://app.twilix.io">Click here to get it</a>){" "}
+        </Text>
+        <Input
+          value={apiKey}
+          onChange={(e) => setApiKey(e.target.value)}
+          type="password"
+        ></Input>
+    <Text>Enter text contents you would like to extract from here:</Text>
       <Textarea placeholder="Enter information here" value={formValues.text} onChange={handleTextChange} width={600}
         height={600}/>
 
