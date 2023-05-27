@@ -100,6 +100,7 @@ const MyForm: React.FC = () => {
 
   return (
     <Box maxWidth={400}>
+        <Heading>Extract Playground</Heading>
         <Text>
           API Key (<a href="https://app.twilix.io">Click here to get it</a>){" "}
         </Text>

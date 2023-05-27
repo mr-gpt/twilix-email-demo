@@ -66,7 +66,7 @@ Bill: `);
 
   return (
     <Container centerContent>
-      <Heading>Email Demo</Heading>
+      <Heading>Auto Suggest Demo</Heading>
       <form onSubmit={handleSubmit}>
         <VStack width="100%" spacing={4}>
           <FormControl id="text">
