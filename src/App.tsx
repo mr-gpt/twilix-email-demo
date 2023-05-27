@@ -2,13 +2,8 @@ import * as React from "react"
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
   VStack,
-  Code,
-  Grid,
   theme,
-  Textarea,
 } from "@chakra-ui/react"
 import Emailform from "./components/emailForm"
 
@@ -22,7 +17,6 @@ export const App = () => (
         alignItems="center"
       >
       <VStack spacing={4}>
-        {/* Include your components inside the VStack with appropriate spacing */}
           <Emailform/>
       </VStack>
     </Box>    
