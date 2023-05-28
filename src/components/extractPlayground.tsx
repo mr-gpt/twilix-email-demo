@@ -4,15 +4,9 @@ import {
   Button,
   Textarea,
   HStack,
-  Container,
-  FormControl,
-  FormLabel,
-  VStack,
   Text,
   Input,
   Heading,
-  Icon,
-  IconButton
 } from "@chakra-ui/react";
 import axios from "axios";
 import { TwilixClient } from "twilixsdk";
@@ -81,11 +75,11 @@ const MyForm: React.FC = () => {
       const client = new TwilixClient(apiKey);
       console.log("client started");
       console.log('formValues', formValues);
-      let response = client.extract(
+      let response = await client.extract(
         formValues
       );
-
-      setResponseText(JSON.stringify(response, null, 2));
+      console.log(response)
+      setResponseText(JSON.stringify(response));
 
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
@@ -99,6 +93,7 @@ const MyForm: React.FC = () => {
   }
 
   return (
+    <HStack>
     <Box maxWidth={400} margin={8}>
         <Heading>Extract Playground</Heading>
         <Text>
@@ -112,6 +107,9 @@ const MyForm: React.FC = () => {
     <Text>Enter text contents you would like to extract from here:</Text>
       <Textarea placeholder="Enter information here" value={formValues.text} onChange={handleTextChange} width={600}
         height={400}/>
+
+    </Box>
+    <Box maxWidth={400} margin={8}>
 
       {formValues.extract_infos.map((extractInfo, index) => (
         <Box key={index} marginTop={8} width={600} marginBottom={8}>
@@ -158,12 +156,14 @@ const MyForm: React.FC = () => {
       </HStack>
       {(responseText || errorText) && (
         <Box borderWidth={1} borderRadius="md" p={4} mt={4} w="100%">
+          <Text>Response:</Text>
           <Text fontSize="sm" fontFamily="mono">
             {responseText || errorText}
           </Text>
         </Box>
       )}
     </Box>
+    </HStack>
   );
 };
 
