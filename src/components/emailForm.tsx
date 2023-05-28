@@ -33,7 +33,10 @@ Bill: `);
       // insert the things based on the message
       const client = new TwilixClient(apiKey);
       console.log("client started");
-      await client.deleteCollection(collectionName);
+      try {
+        await client.deleteCollection(collectionName);
+      } catch {
+      }
       const bulkInsertResponse = await client.bulkInsert(
         collectionName,
         text.split("---").map((m: string) => {
