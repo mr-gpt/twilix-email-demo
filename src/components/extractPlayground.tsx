@@ -105,8 +105,10 @@ const MyForm: React.FC = () => {
           type="password"
         ></Input>
     <Text>Enter text contents you would like to extract from here:</Text>
-      <Textarea placeholder="Enter information here" value={formValues.text} onChange={handleTextChange} width={600}
-        height={400}/>
+      <Textarea placeholder="Enter information here" 
+        value={formValues.text} onChange={handleTextChange} width={400}
+        height={400}
+      />
 
     </Box>
     <Box maxWidth={400} margin={8}>
