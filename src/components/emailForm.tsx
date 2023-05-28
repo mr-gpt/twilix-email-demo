@@ -46,7 +46,7 @@ Bill: `);
       const response = await client.autoSuggest(
         collectionName, {}
       )
-      // setResponseText(response);
+      setResponseText(JSON.stringify(response));
       setLoading(false);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
