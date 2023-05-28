@@ -33,6 +33,7 @@ Bill: `);
       // insert the things based on the message
       const client = new TwilixClient(apiKey);
       console.log("client started");
+      await client.deleteCollection(collectionName);
       const bulkInsertResponse = await client.bulkInsert(
         collectionName,
         text.split("---").map((m: string) => {
@@ -42,16 +43,10 @@ Bill: `);
       console.log(bulkInsertResponse);
 
       // run auto suggest on the collection name
-      const response = await axios.post(
-        `https://api.twilix.io/collection/${collectionName}/auto_suggest`,
-        { text },
-        {
-          headers: {
-            Authorization: `Bearer ${apiKey}`,
-          },
-        }
-      );
-      setResponseText(JSON.stringify(response.data, null, 2));
+      const response = await client.autoSuggest(
+        collectionName, {}
+      )
+      // setResponseText(response);
       setLoading(false);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
@@ -82,7 +77,7 @@ Bill: `);
             <Text>Put a '---'in between each response.</Text>
             <Textarea
               value={text}
-              onChange={(e) => setText(e.target.value)}
+              onChange={(e: any) => setText(e.target.value)}
               isRequired
               minHeight="500px"
               maxHeight="500px"
