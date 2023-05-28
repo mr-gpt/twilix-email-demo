@@ -5,7 +5,6 @@ import {
   VStack,
   theme,
   Button,
-  ButtonGroup,
   Stack,
 } from "@chakra-ui/react";
 import Emailform from "./components/emailForm";
