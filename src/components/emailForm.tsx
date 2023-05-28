@@ -16,9 +16,11 @@ import { TwilixClient } from "twilixsdk";
 
 const SimpleForm = () => {
   const [text, setText] =
-    useState(`James: Hi Bill, on my 21st birthday, I wanted to invite you to my birth party! Can you make it?
----
-Bill: `);
+    useState(`Hi Bill, on my 21st birthday, I wanted to invite you to my birth party! Can you make it?
+    ---
+    Yeah definitely! Where is it going to be?
+    ---
+    It's going to be in Sydney! Is that going to be a problem for you?`);
   const [apiKey, setApiKey] = useState("");
   const [responseText, setResponseText] = useState("");
   const [errorText, setErrorText] = useState("");
