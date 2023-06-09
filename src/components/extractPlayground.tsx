@@ -18,14 +18,14 @@ interface ExtractInfo {
 
 interface FormValues {
   text: string;
-  extract_infos: ExtractInfo[];
+  extract_inputs: ExtractInfo[];
 }
 
 const MyForm: React.FC = () => {
   // state for storing form values
   const [formValues, setFormValues] = useState<FormValues>({
     text: 'James was born in Sydney on the 27th of December.',
-    extract_infos: [],
+    extract_inputs: [],
   });
   const [isLoading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -44,27 +44,27 @@ const MyForm: React.FC = () => {
   const handleAddExtractInfo = () => {
     setFormValues({
       ...formValues,
-      extract_infos: [...formValues.extract_infos, { key: '', description: '' }],
+      extract_inputs: [...formValues.extract_inputs, { key: '', description: '' }],
     });
   };
 
   // handler for removing an extract info object
   const handleRemoveExtractInfo = (index: number) => {
-    const extractInfos = [...formValues.extract_infos];
+    const extractInfos = [...formValues.extract_inputs];
     extractInfos.splice(index, 1);
     setFormValues({
       ...formValues,
-      extract_infos: extractInfos,
+      extract_inputs: extractInfos,
     });
   };
 
   // handler for updating extract info values
   const handleExtractInfoChange = (index: number, field: keyof ExtractInfo, value: string) => {
-    const extractInfos = [...formValues.extract_infos];
+    const extractInfos = [...formValues.extract_inputs];
     extractInfos[index][field] = value;
     setFormValues({
       ...formValues,
-      extract_infos: extractInfos,
+      extract_inputs: extractInfos,
     });
   };
 
@@ -113,7 +113,7 @@ const MyForm: React.FC = () => {
     </Box>
     <Box maxWidth={400} margin={8}>
 
-      {formValues.extract_infos.map((extractInfo, index) => (
+      {formValues.extract_inputs.map((extractInfo, index) => (
         <Box key={index} marginTop={8} width={600} marginBottom={8}>
           <Text>The field you to store in the JSON</Text>
           <Input
