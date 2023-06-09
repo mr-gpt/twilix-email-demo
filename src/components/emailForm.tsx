@@ -25,7 +25,7 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
   const [responseText, setResponseText] = useState("");
   const [errorText, setErrorText] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const [collectionName, setCollectionName] = useState("emailCollection");
+  const [collectionName, setCollectionName] = useState("EmailCollection");
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();

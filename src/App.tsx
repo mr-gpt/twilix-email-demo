@@ -11,7 +11,7 @@ import Emailform from "./components/emailForm";
 import ExtractPlayground from "./components/extractPlayground"
 
 export const App = () => {
-  let [playground, setPlayground] = React.useState("auto-suggest");
+  let [playground, setPlayground] = React.useState("extract");
   return (
     <ChakraProvider theme={theme}>
       <Box
@@ -23,10 +23,10 @@ export const App = () => {
       >
         <VStack spacing={4}>
           <Stack spacing={4} direction="row" align="center" marginTop={8}>
-            <Button colorScheme="teal" size="xs" onClick={(event: any) => setPlayground("auto-suggest")}
+            {/* <Button colorScheme="teal" size="xs" onClick={(event: any) => setPlayground("auto-suggest")}
            >
               Auto-Suggest Playground
-            </Button>
+            </Button> */}
             <Button colorScheme="teal" size="xs" onClick={(event: any) => setPlayground("extract")}>
               Extract Playground
             </Button>
