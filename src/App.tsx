@@ -31,10 +31,10 @@ export const App = () => {
               Extract Playground
             </Button>
           </Stack>
-          {
+          {/* {
             playground == "auto-suggest" &&
             <Emailform />
-          }
+          } */}
           {
             playground == "extract" &&
             <ExtractPlayground/>
