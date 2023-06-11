@@ -39,28 +39,28 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
         await client.deleteCollection(collectionName);
       } catch {
       }
-      // const bulkInsertResponse = await fetch("http://localhost:8000/v1/collection/bulkInsert", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: "Bearer " + apiKey,
-      //   },
-      //   body: JSON.stringify({
-      //     collection: "emailConversation",
-      //     objects:  text.split("---").map((m: string) => {
-      //       return { message: m };
-      //     }),
-      //   }),
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     // Handle the response data
-      //     console.log(data);
-      //   })
-      //   .catch((error) => {
-      //     // Handle any errors
-      //     console.error("Error:", error);
-      //   });
+      const bulkInsertResponse = await fetch("http://localhost:8000/v1/collection/bulkInsert", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + apiKey,
+        },
+        body: JSON.stringify({
+          collection: "emailConversation",
+          objects:  text.split("---").map((m: string) => {
+            return { message: m };
+          }),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response data
+          console.log(data);
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error("Error:", error);
+        });
 
       // console.log(bulkInsertResponse);
 
