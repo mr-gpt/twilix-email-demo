@@ -39,7 +39,7 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
         await client.deleteCollection(collectionName);
       } catch {
       }
-      const bulkInsertResponse = await fetch("http://localhost:8000/v1/collection/bulkInsert", {
+      const bulkInsertResponse = await fetch("http://api.twilix.io/v1/collection/bulkInsert", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
       // console.log(bulkInsertResponse);
 
       // run auto suggest on the collection name
-      const response = await fetch("http://localhost:8000/v1/collection/suggestMessage", {
+      const response = await fetch("http://api.twilix.io/v1/collection/suggestMessage", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
