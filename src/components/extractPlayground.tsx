@@ -18,14 +18,14 @@ interface ExtractInfo {
 
 interface FormValues {
   text: string;
-  extract_inputs: ExtractInfo[];
+  extractInputs: ExtractInfo[];
 }
 
 const MyForm: React.FC = () => {
   // state for storing form values
   const [formValues, setFormValues] = useState<FormValues>({
     text: 'James was born in Sydney on the 27th of December.',
-    extract_inputs: [],
+    extractInputs: [],
   });
   const [isLoading, setLoading] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -44,27 +44,27 @@ const MyForm: React.FC = () => {
   const handleAddExtractInfo = () => {
     setFormValues({
       ...formValues,
-      extract_inputs: [...formValues.extract_inputs, { key: '', description: '' }],
+      extractInputs: [...formValues.extractInputs, { key: '', description: '' }],
     });
   };
 
   // handler for removing an extract info object
   const handleRemoveExtractInfo = (index: number) => {
-    const extractInfos = [...formValues.extract_inputs];
+    const extractInfos = [...formValues.extractInputs];
     extractInfos.splice(index, 1);
     setFormValues({
       ...formValues,
-      extract_inputs: extractInfos,
+      extractInputs: extractInfos,
     });
   };
 
   // handler for updating extract info values
   const handleExtractInfoChange = (index: number, field: keyof ExtractInfo, value: string) => {
-    const extractInfos = [...formValues.extract_inputs];
+    const extractInfos = [...formValues.extractInputs];
     extractInfos[index][field] = value;
     setFormValues({
       ...formValues,
-      extract_inputs: extractInfos,
+      extractInputs: extractInfos,
     });
   };
 
@@ -75,12 +75,24 @@ const MyForm: React.FC = () => {
       const client = new TwilixClient(apiKey);
       console.log("client started");
       console.log('formValues', formValues);
-      let response = await client.extract(
-        formValues
-      );
-      console.log(response)
-      setResponseText(JSON.stringify(response));
-
+      const response = await fetch("http://localhost:8000/v1/extract", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + apiKey,
+        },
+        body: JSON.stringify(formValues),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response data
+          console.log(data);
+          setResponseText(JSON.stringify(data));
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error("Error:", error);
+        });
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
         setErrorText(error.message);
@@ -113,7 +125,7 @@ const MyForm: React.FC = () => {
     </Box>
     <Box maxWidth={400} margin={8}>
 
-      {formValues.extract_inputs.map((extractInfo, index) => (
+      {formValues.extractInputs.map((extractInfo, index) => (
         <Box key={index} marginTop={8} width={600} marginBottom={8}>
           <Text>The field you to store in the JSON</Text>
           <Input

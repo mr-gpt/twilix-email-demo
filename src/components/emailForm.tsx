@@ -39,19 +39,56 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
         await client.deleteCollection(collectionName);
       } catch {
       }
-      const bulkInsertResponse = await client.bulkInsert(
-        collectionName,
-        text.split("---").map((m: string) => {
-          return { message: m };
-        })
-      );
-      console.log(bulkInsertResponse);
+      // const bulkInsertResponse = await fetch("http://localhost:8000/v1/collection/bulkInsert", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: "Bearer " + apiKey,
+      //   },
+      //   body: JSON.stringify({
+      //     collection: "emailConversation",
+      //     objects:  text.split("---").map((m: string) => {
+      //       return { message: m };
+      //     }),
+      //   }),
+      // })
+      //   .then((response) => response.json())
+      //   .then((data) => {
+      //     // Handle the response data
+      //     console.log(data);
+      //   })
+      //   .catch((error) => {
+      //     // Handle any errors
+      //     console.error("Error:", error);
+      //   });
+
+      // console.log(bulkInsertResponse);
 
       // run auto suggest on the collection name
-      const response = await client.autoSuggest(
-        collectionName, {}
-      )
-      setResponseText(JSON.stringify(response));
+      const response = await fetch("http://localhost:8000/v1/collection/suggestMessage", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + apiKey,
+        },
+        body: JSON.stringify({
+          collection: "emailConversation",
+          objects:  text.split("---").map((m: string) => {
+            return { message: m };
+          }),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Handle the response data
+          console.log(data);
+          setResponseText(JSON.stringify(data?.result?.response || ""));
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.error("Error:", error);
+        });
+      
       setLoading(false);
     } catch (error: any) {
       if (axios.isAxiosError(error)) {
