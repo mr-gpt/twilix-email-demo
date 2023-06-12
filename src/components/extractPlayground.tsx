@@ -75,7 +75,7 @@ const MyForm: React.FC = () => {
       const client = new TwilixClient(apiKey);
       console.log("client started");
       console.log('formValues', formValues);
-      const response = await fetch("http://api.twilix.io/v1/extract", {
+      const response = await fetch("https://api.twilix.io/v1/extract", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
