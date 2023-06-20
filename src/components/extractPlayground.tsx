@@ -81,7 +81,14 @@ const MyForm: React.FC = () => {
           "Content-Type": "application/json",
           Authorization: "Bearer " + apiKey,
         },
-        body: JSON.stringify(formValues),
+        body: JSON.stringify({
+          model: formValues,
+          auth_details: {
+            weaviateConnectionString: "",
+            organizationID: "20",
+            membership: "UNPAID"
+          }}
+        ),
       })
         .then((response) => response.json())
         .then((data) => {

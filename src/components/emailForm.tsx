@@ -46,10 +46,17 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
           Authorization: "Bearer " + apiKey,
         },
         body: JSON.stringify({
-          collection: "emailConversation",
-          objects:  text.split("---").map((m: string) => {
-            return { message: m };
-          }),
+          model: {
+            collection: "emailConversation",
+            objects:  text.split("---").map((m: string) => {
+              return { message: m };
+            }),
+          },
+          auth_details: {
+            weaviateConnectionString: "",
+            organizationID: "20",
+            membership: "UNPAID"
+          }
         }),
       })
         .then((response) => response.json())
@@ -72,10 +79,17 @@ It's going to be in Sydney! Is that going to be a problem for you?`);
           Authorization: "Bearer " + apiKey,
         },
         body: JSON.stringify({
-          collection: "emailConversation",
-          objects:  text.split("---").map((m: string) => {
-            return { message: m };
-          }),
+          model: {
+            collection: "emailConversation",
+            objects:  text.split("---").map((m: string) => {
+              return { message: m };
+            }),
+          },
+          auth_details: {
+            weaviateConnectionString: "",
+            organizationID: "20",
+            membership: "UNPAID"
+          }
         }),
       })
         .then((response) => response.json())
